@@ -18,12 +18,6 @@ function convertResponseToPeople(rawData) {
     return results;
 }
 
-function convertResponseToPeople1(rawData) {
-    return rawData.results.map(person => {
-        return {url: person.url, name: person.name, films: person.films};
-    });
-}
-
 export function fetchPeopleSucceeded(people) {
     return {
         type: actionTypes.FETCH_PEOPLE_SUCCEEDED,
@@ -44,8 +38,10 @@ export function fetchPeople() {
 function convertResponseToFilms(rawData) {
     const results = new Map();
     rawData.results.forEach(film => {
-        results.set(film.url, { title: film.title,
-                               release_date: film.release_date } );
+        results.set(film.url, {
+            url: film.url,
+            title: film.title,
+            release_date: film.release_date } );
     });
     return results;
 }

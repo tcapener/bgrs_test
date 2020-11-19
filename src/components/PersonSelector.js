@@ -12,8 +12,8 @@ class PersonSelector extends Component {
         this.props.dispatch(fetchPeople());
     }
 
-    onSelectPerson() {
-        this.props.dispatch(selectPerson(this.props.selectedPersonUrl));
+    onSelectPerson(e) {
+        this.props.dispatch(selectPerson(e.target.value));
     }
 
     render() {
@@ -23,7 +23,7 @@ class PersonSelector extends Component {
                 <select value={this.props.selectedPersonUrl} onChange={this.onSelectPerson}>
                     <option key="XYZ">Select a person...</option>
                     { people.map(person => (
-                        <option key={person.url}>{person.name}</option>
+                        <option key={person.url} value={person.url}>{person.name}</option>
                     ))};
                 </select>
             </div>

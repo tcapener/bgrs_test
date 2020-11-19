@@ -11,14 +11,21 @@ function getFilmsForPerson(state, personUrl) {
     let result = [];
     let person = state.people.get(personUrl);
     if(person) {
-        let result = person.films.map(url => state.films.get(url));
-        console.log(result);
+        result = person.films.map(url => {
+            return state.films.get(url);
+        });
     }
     return result;
 }
 
 export default function reducers(state = defaultState, action) {
     switch(action.type) {
+        case actionTypes.FETCH_PEOPLE_STARTED: {
+            return {
+                ...state,
+                isLoading: true
+            }
+        }
         case actionTypes.SELECT_PERSON: {
             return {
                 ...state,

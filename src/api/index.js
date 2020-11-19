@@ -17,5 +17,5 @@ export function fetchPeople() {
 }
 
 export function fetchFilms() {
-    return apiClient.get(PEOPLE_API);
+    return apiClient.get(FILMS_API);
 }

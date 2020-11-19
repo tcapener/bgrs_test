@@ -8,8 +8,7 @@ class MainPanel extends Component {
     render() {
         return (
             <div>
-                {console.log(this.props.people)}
-                <PersonSelector people={this.props.people} />
+                <PersonSelector />
                 <FilmList />
             </div>
         );

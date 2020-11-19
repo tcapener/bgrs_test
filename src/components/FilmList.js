@@ -11,8 +11,10 @@ class FilmList extends Component {
         return (
             <select size="10">
                 { this.props.selectedFilms.map(film => {
-                    let filmTitle = this.props.films.get(film);
-                    return <option value={filmTitle}>{filmTitle}</option>
+                    let filmEntry = this.props.films.get(film.url);
+                    return <option key={filmEntry.url} value={filmEntry.title}>
+                        {filmEntry.title}
+                    </option>
                 }
                 )};
             </select>
