@@ -10,6 +10,7 @@ class MainPanel extends Component {
             <div>
                 <PersonSelector />
                 <FilmList />
+                <LatestFilm />
             </div>
         );
     }

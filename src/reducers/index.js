@@ -4,7 +4,9 @@ const defaultState = {
     selectedPersonUrl: "",
     selectedFilms: [],
     people: new Map(),
-    films: new Map()
+    films: new Map(),
+    latestFilmTitle: "",
+    latestFilmDate: ""
 };
 
 function getFilmsForPerson(state, personUrl) {
@@ -27,10 +29,15 @@ export default function reducers(state = defaultState, action) {
             }
         }
         case actionTypes.SELECT_PERSON: {
+            const selectedFilms = getFilmsForPerson(state, action.payload.selectedPersonUrl);
+            const lastFilm = selectedFilms[selectedFilms.length-1];
             return {
                 ...state,
                 selectedPersonUrl: action.payload.selectedPersonUrl,
-                selectedFilms: getFilmsForPerson(state, action.payload.selectedPersonUrl)
+                selectedFilms: selectedFilms,
+                isLoading: false,
+                latestFilmTitle: lastFilm.title,
+                latestFilmDate: lastFilm.release_date
             }
         }
         case actionTypes.FETCH_PEOPLE_SUCCEEDED: {
